@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-dark-bg: #05060a;
+  --color-panel-bg: #0a0c14;
+  --color-border-main: #1a1c23;
+  --color-text-muted: #4a4e69;
+  --color-text-main: #e0e0e0;
+  
+  --color-glow-cyan: var(--system-primary, #00f2ff);
+  --color-glow-purple: #bc13fe;
+  --color-glow-gold: #ffd700;
+  --color-glow-red: #ff4d4d;
+}
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-text-main font-mono selection:bg-glow-cyan/30;
+  }
+
+  /* Compact Scrollbars */
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { @apply bg-dark-bg; }
+  ::-webkit-scrollbar-thumb { @apply bg-border-main hover:bg-text-muted transition-colors; }
+}
+
+@layer components {
+  .high-density-panel {
+    @apply border-2 border-border-main bg-panel-bg p-4 relative overflow-hidden;
+  }
+
+  .accent-corner {
+    @apply absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-glow-cyan/50 pointer-events-none;
+  }
+
+  .dense-btn {
+    @apply px-3 py-1 text-[10px] uppercase font-bold transition-all active:scale-95 border;
+  }
+
+  .dense-btn-primary {
+    @apply bg-glow-cyan text-dark-bg border-glow-cyan hover:bg-glow-cyan/80;
+  }
+
+  .dense-btn-outline {
+    @apply border-text-muted text-text-muted hover:border-text-main hover:text-text-main;
+  }
+
+  .stat-card {
+    @apply bg-dark-bg border border-border-main p-2 text-center;
+  }
+}
